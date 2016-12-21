@@ -45,13 +45,15 @@ script:
     find typo3conf/ext/$EXTENSIONKEY/ -name \*.php ! -path "typo3conf/ext/$EXTENSIONKEY/vendor/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
 
 after_success:
+  - echo "PWD: $(pwd)"
+  - echo "Travis tag is: ${TRAVIS_TAG}"
   - >
     if [ -n "$TRAVIS_TAG" ] && [ -n "$TYPO3_ORG_USERNAME" ] && [ -n "$TYPO3_ORG_PASSWORD" ]; then
       if [ $? -eq 0 ]; then
           echo -e "Preparing upload of release ${TRAVIS_TAG} to TER\n"
           curl -sSL https://raw.githubusercontent.com/alrra/travis-after-all/1.4.4/lib/travis-after-all.js | node
           if [ $? -eq 0 ]; then
-            # Link the git checkout directory to a directory called like the extension key, because the uploader requires that.
+
             echo "Moving checkout to expected folder structure."
             EXTENSION_DIR=$(pwd)
             PARENT_DIR="$EXTENSION_DIR/../"
