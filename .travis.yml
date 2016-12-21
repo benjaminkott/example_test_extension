@@ -2,8 +2,6 @@
 language: php
 
 php:
-  - 5.5
-  - 5.6
   - 7.0
 
 env:
@@ -11,13 +9,6 @@ env:
     - EXTENSIONKEY=example_test_extension
   matrix:
     - TYPO3_BRANCH=master
-    - TYPO3_BRANCH=TYPO3_7-6
-matrix:
-  exclude:
-    - php: 5.5
-      env: TYPO3_BRANCH=master
-    - php: 5.6
-      env: TYPO3_BRANCH=master
 
 sudo: false
 
@@ -46,5 +37,3 @@ script:
     echo;
     echo "Running php lint";
     find typo3conf/ext/$EXTENSIONKEY/ -name \*.php ! -path "typo3conf/ext/$EXTENSIONKEY/vendor/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
-  - >
-    typo3conf/ext/$EXTENSIONKEY/vendor/bin/phpcs --standard=PSR2 -n typo3conf/ext/$EXTENSIONKEY/Classes/
