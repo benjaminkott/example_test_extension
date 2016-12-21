@@ -1,0 +1,36 @@
+{
+  "name": "bk2k/example-test-extension",
+  "type": "typo3-cms-extension",
+  "description": "",
+  "keywords": [
+    "test"
+  ],
+  "homepage": "https://github.com/benjaminkott/example_test_extension",
+  "authors": [
+    {
+      "name": "Benjamin Kott",
+      "email": "info@bk2k.info",
+      "role": "Developer",
+      "homepage": "http://www.bk2k.info/"
+    }
+  ],
+  "license": "MIT",
+  "support": {
+    "issues": "https://github.com/benjaminkott/example_test_extension/issues"
+  },
+  "version": "7.0.3",
+  "require-dev": {
+    "squizlabs/php_codesniffer": "2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "BK2K\\ExampleTestExtension\\": "Classes"
+    }
+  },
+  "replace": {
+    "example_test_extension": "self.version",
+    "typo3-ter/example-test-extension": "self.version"
+  },
+  "extra": {
+  }
+}
