@@ -40,6 +40,7 @@ script:
 
 after_success:
   - >
+    echo;
     if [ -n "$TRAVIS_TAG" ] && [ -n "$TYPO3_ORG_USERNAME" ] && [ -n "$TYPO3_ORG_PASSWORD" ]; then
       echo "Uploading release ${TRAVIS_TAG} to TER"
     fi;
