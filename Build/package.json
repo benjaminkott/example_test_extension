@@ -1,0 +1,14 @@
+{
+    "name": "bk2k-exampletestextension",
+    "description": "",
+    "repository": "https://github.com/benjaminkott/example_test_extension.git",
+    "readme": "../README.rst",
+    "homepage": "http://www.bk2k.info",
+    "author": "Benjamin Kott",
+    "version": "1.0.0",
+    "license": "MIT",
+    "devDependencies": {
+        "grunt": "~0.4.5",
+        "grunt-npm-install": "^0.2.0"
+    }
+}

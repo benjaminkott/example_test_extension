@@ -1,0 +1,22 @@
+{
+    "name": "example-test-extension",
+    "version": "1.0.0",
+    "authors": [{
+        "name": "Benjamin Kott <info@bk2k.info>",
+        "role": "Developer",
+        "homepage": "http://www.bk2k.info"
+    }],
+    "description": "",
+    "keywords": [
+        "typo3",
+        "bootstrap",
+        "theme",
+        "template"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/benjaminkott/example_test_extension",
+    "private": true,
+    "dependencies": {
+        "jquery": "2.2.1"
+    }
+}
