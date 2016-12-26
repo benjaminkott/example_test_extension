@@ -35,13 +35,14 @@ cache:
     - $HOME/.composer/cache
 
 before_install:
-  - composer global require namelesscoder/typo3-repository-client
+  - phpenv config-rm xdebug.ini
+  - composer self-update
+  - composer --version
 
 install:
   - composer install --no-interaction
 
 before_script:
-  - git clean -dffx
   - composer require typo3/cms="$TYPO3_VERSION"
   - export TYPO3_PATH_WEB="$PWD/.build/web"
 
@@ -49,7 +50,7 @@ script:
   - >
     echo;
     echo "Running php lint";
-    find . -name \*.php ! -path "./.build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
+    find . -name \*.php ! -path "./.Build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
 
 after_script:
   - >
