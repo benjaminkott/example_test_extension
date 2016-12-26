@@ -18,6 +18,10 @@
   "support": {
     "issues": "https://github.com/benjaminkott/example_test_extension/issues"
   },
+  "require": {
+    "php": ">=5.5.0",
+    "typo3/cms-core": "^7.6.0 || ^8.0"
+  },
   "require-dev": {
     "squizlabs/php_codesniffer": "2.*"
   },
@@ -30,6 +34,21 @@
     "example_test_extension": "self.version",
     "typo3-ter/example-test-extension": "self.version"
   },
+  "config": {
+    "optimize-autoloader": true,
+    "vendor-dir": ".build/vendor",
+    "bin-dir": ".build/bin"
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "mkdir -p .build/web/typo3conf/ext/",
+      "[ -L .build/web/typo3conf/ext/example_test_extension ] || ln -snvf ../../../../. .build/web/typo3conf/ext/example_test_extension"
+    ]
+  },
   "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": ".build/web"
+    }
   }
 }

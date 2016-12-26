@@ -43,13 +43,13 @@ install:
 before_script:
   - git clean -dffx
   - composer require typo3/cms="$TYPO3_VERSION"
-  - export TYPO3_PATH_WEB="$PWD/.Build/Web"
+  - export TYPO3_PATH_WEB="$PWD/.build/web"
 
 script:
   - >
     echo;
     echo "Running php lint";
-    find . -name \*.php ! -path "./.Build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
+    find . -name \*.php ! -path "./.build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
 
 after_script:
   - >
@@ -60,6 +60,6 @@ after_script:
         git reset --hard HEAD && git clean -fx
         TAG_MESSAGE=`git tag -n10 -l $TRAVIS_TAG | sed 's/^[0-9.]*[ ]*//g'`
         echo "Uploading release ${TRAVIS_TAG} to TER"
-        .Build/bin/upload . "$TYPO3_ORG_USERNAME" "$TYPO3_ORG_PASSWORD" "$TAG_MESSAGE"
+        .build/bin/upload . "$TYPO3_ORG_USERNAME" "$TYPO3_ORG_PASSWORD" "$TAG_MESSAGE"
       fi;
     fi;
