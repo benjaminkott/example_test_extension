@@ -48,6 +48,17 @@ script:
     echo;
     echo "Running php lint";
     find . -name \*.php ! -path "./.build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
+  - >
+    echo;
+    echo "Running phpcs";
+    .build/bin/phpcs --standard=PSR2 -n Classes/
+  - >
+    echo "Installing npm modules";
+    pushd Build;
+    npm install && npm install grunt-cli;
+    echo "Executing grunt";
+    node_modules/.bin/grunt;
+    popd
 
 after_script:
   - >
