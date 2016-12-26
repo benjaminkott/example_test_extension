@@ -35,8 +35,6 @@ cache:
     - $HOME/.composer/cache
 
 before_install:
-  - composer self-update
-  - composer --version
   - composer global require namelesscoder/typo3-repository-client
 
 install:
